@@ -43,7 +43,7 @@ func (l *Limiter) moveToNextPosition() {
 	l.currentPosition = int(currentIndex)
 
 	sub := now.Sub(l.lastUsageTime)
-	if sub > l.size {
+	if sub >= l.size {
 		l.data = make([]uint64, l.size/l.granularity)
 		l.counter = 0
 	} else {
